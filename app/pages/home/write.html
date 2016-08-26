@@ -1,0 +1,57 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      写日报
+    </ion-title>
+    <ion-buttons start>
+      <button (click)="dismiss()">
+        <span primary>Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item>
+      	<ion-label floating>日报内容</ion-label>
+    		<ion-input type="text"></ion-input>
+        <!--<ion-avatar item-right>
+          <img src="{{character.image}}">
+        </ion-avatar>-->
+        <h2>{{character.name}}</h2>
+        <p>{{character.quote}}</p>
+      </ion-item>
+      <ion-item>
+      	<ion-label floating>今日自评</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+      	<ion-label floating>行得通的</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+      	<ion-label floating>可改进的</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+      	<ion-label floating>明日计划</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+      	<ion-label floating>需要帮助</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+     <!-- <ion-item *ngFor="let item of character['items']">
+        {{item.title}}
+        <ion-note item-right>
+          {{item.note}}
+        </ion-note>
+      </ion-item>-->
+  </ion-list>
+    <button fab dark fab-bottom fab-center class="fab-footer">
+    <ion-icon name="add" is-active="false"></ion-icon>
+  </button>
+</ion-content>

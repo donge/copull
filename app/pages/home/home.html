@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My Reports</ion-title>
+    <ion-buttons end>
+      <button ion-item (click)="openModal({charNum: 0})">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+
+	<ion-card *ngFor="let report of reports; let i = index">
+	  <ion-card-header>
+	   #{{i+1}} {{report.date}}
+	  </ion-card-header>
+	  <ion-card-content>
+	    我的日报: {{report.content}}
+	  </ion-card-content>
+	  <ion-card-content>
+	  		自我评价: {{report.content1}}
+	  </ion-card-content>
+	  	  <ion-card-content>
+	  		明日计划: {{report.content3}}
+	  </ion-card-content>
+	  <ion-row>
+    <ion-col>
+      <button primary clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>12 Likes</div>
+      </button>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+       {{report.time}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+	</ion-card>
+  <p>
+    日报是每天的工作回顾和总结，请按时填写.
+  </p>
+</ion-content>

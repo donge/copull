@@ -1,0 +1,30 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      匿名私信
+    </ion-title>
+    <ion-buttons start>
+      <button (click)="dismiss()">
+        <span primary>Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item>
+      	<ion-label floating>私信内容</ion-label>
+    		<ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+      收件人无法获得用户信息，欢迎提出宝贵意见。
+      </ion-item>
+
+  </ion-list>
+    <button fab dark fab-bottom fab-center class="fab-footer">
+    <ion-icon name="paper-plane" is-active="false"></ion-icon>
+  </button>
+</ion-content>
