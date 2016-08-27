@@ -10,18 +10,18 @@
 
     <ion-item>
       <ion-label fixed>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" value={{username}}></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" value={{password}}></ion-input>
     </ion-item>
 
   </ion-list>
 
   <div padding>
-    <button primary block>Sign In</button>
+    <button (click)="signIn()" primary block>Sign In</button>
   </div>
 
 
