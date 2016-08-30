@@ -17,32 +17,20 @@ export class HomePage {
               private navCtrl: NavController,
               private http: Http) {
 
-    var token = window.localStorage.getItem('token');
-    var creds = "page=1&numOfPage=3&userId=1&token="+token;
-    var headers = new Headers();
-
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    //headers.append('Authorization', 'Basic '+ token);
-
-    http.post('http://localhost:3000/getreports', creds, {
-      headers: headers
-      })
-      .map(res => {this.reports = res.json().data;//res.json();
-        console.log(this.reports[0].content);
-        console.log("hello" + this.reports);
-      })
-      .subscribe(
-        data => console.log('Received:' + data),
-        err => console.log(err),
-        () => console.log('Call Complete')
-    );
+    this.refresh();
   }
 
   refresh() {
     var token = window.localStorage.getItem('token');
-    var creds = "page=1&numOfPage=3&userId=1&token="+token;
+    var userid = window.localStorage.getItem('userid');
+
+    var creds = "page=1&numOfPage=5&userId="+userid+"&token="+token;
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(token);
+    //headers.append('Authorization', 'Bearer '+ token);
+    //headers.append('Cache-Control', 'no-cache');
+    console.log(headers);
 
     this.http.post('http://localhost:3000/getreports', creds, {
       headers: headers
@@ -75,11 +63,20 @@ export class HomePage {
 })
 class ModalsWritePage {
   character;
+  draft: Report;
+  content: string;
+  date: string;
+  score: string;
+  content1: string;
+  content2: string;
+  content3: string;
+  content4: string;
 
   constructor(
       public platform: Platform,
       public params: NavParams,
-      public viewCtrl: ViewController
+      public viewCtrl: ViewController,
+      private http: Http
   ) {
     var characters = [
       {
@@ -119,4 +116,32 @@ class ModalsWritePage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+   write() {
+   	console.log("write!!!")
+   	//data = {date:dateStr, content:$("#content").val(), score:$("#score").val(),
+    //content1:$("#content1").val(), content2:$("#content2").val(),
+    //content3:$("#content3").val(), content4:$("#content4").val()}
+    var token = window.localStorage.getItem('token');
+    var userid = window.localStorage.getItem('userid');
+    var creds = "date="+this.date+"&content="+this.content+"&score="+this.score+
+    "&content1="+this.content1+"&content2="+this.content2+"&content3="+this.content3+
+    "&content4="+this.content4+"&userId="+userid+"&token="+token;
+
+    //console.log(creds);
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.http.post('http://localhost:3000/write', creds, {
+      headers: headers
+      })
+      .toPromise()
+      .then(this.extractData);
+  }
+
+    private extractData(res: Response) {
+  	let body = res.json();
+  	let headers:Headers = res.headers;
+  	//console.log(headers)
+  	console.log(body.data);
+	}
 }
