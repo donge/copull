@@ -10,14 +10,13 @@ import 'rxjs/add/operator/map';
   templateUrl: './build/pages/signin/signin.html'
 })
 export class SignPage {
-	public password;
-  public username;
+	public password: string;
+  public username: string;
   public res1: Response;
 
   constructor(public modalCtrl: ModalController,
               private navCtrl: NavController,
               private http: Http) {
-
 	}
 
   getCookie(name) {
@@ -28,7 +27,8 @@ export class SignPage {
   }
 
   signIn() {
-    var creds = "userName=admin&password=1234567";
+    var creds = "userName="+this.username+"&password="+this.password;
+    //console.log(creds);
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     //headers.append('X-CSRFToken', this.getCookie('csrftoken'));
@@ -42,8 +42,9 @@ export class SignPage {
   private extractData(res: Response) {
   	let body = res.json();
   	let headers:Headers = res.headers;
-  	console.log(headers)
+  	//console.log(headers)
   	console.log(body.data);
-  	window.localStorage.setItem('token', body.data);
+  	window.localStorage.setItem('token', body.data.token);
+  	window.localStorage.setItem('userid', body.data.userid);
 	}
 }

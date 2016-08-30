@@ -15,9 +15,14 @@
 
 <ion-content>
   <ion-list>
+     <ion-item>
+      <ion-label>Report Time</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+
       <ion-item>
       	<ion-label floating>日报内容</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="content"></ion-input>
         <!--<ion-avatar item-right>
           <img src="{{character.image}}">
         </ion-avatar>-->
@@ -26,23 +31,23 @@
       </ion-item>
       <ion-item>
       	<ion-label floating>今日自评</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="score"></ion-input>
       </ion-item>
             <ion-item>
       	<ion-label floating>行得通的</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="content1"></ion-input>
       </ion-item>
             <ion-item>
       	<ion-label floating>可改进的</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="content2"></ion-input>
       </ion-item>
             <ion-item>
       	<ion-label floating>明日计划</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="content3"></ion-input>
       </ion-item>
             <ion-item>
       	<ion-label floating>需要帮助</ion-label>
-    		<ion-input type="text"></ion-input>
+    		<ion-input type="text" [(ngModel)]="content4"></ion-input>
       </ion-item>
      <!-- <ion-item *ngFor="let item of character['items']">
         {{item.title}}
@@ -51,7 +56,7 @@
         </ion-note>
       </ion-item>-->
   </ion-list>
-    <button fab dark fab-bottom fab-center class="fab-footer">
+    <button fab dark fab-bottom fab-center class="fab-footer" (click)="write()">
     <ion-icon name="add" is-active="false"></ion-icon>
   </button>
 </ion-content>

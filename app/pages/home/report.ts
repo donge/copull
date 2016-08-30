@@ -3,6 +3,7 @@ export class Report {
     public date: string,
     public id: string,
     public content: string,
+    public score: string,
     public content1: string,
     public content2: string,
     public content3: string,
